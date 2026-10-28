@@ -2,7 +2,6 @@
 from __future__ import annotations
 import base64
 import hashlib
-import hmac
 import io
 import json
 import re
@@ -212,18 +211,6 @@ def form_page():
             st.session_state['last_receipt']=response
             st.rerun()
 
-def manager_access():
-    expected=str(setting('manager_password',''))
-    if not expected:st.error('A área do gestor está aguardando configuração de acesso pelo administrador.');return False
-    if st.session_state.get('manager_authenticated'):return True
-    st.subheader('Acesso do gestor')
-    with st.form('manager_login'):
-        password=st.text_input('Código de acesso do teste',type='password')
-        if st.form_submit_button('Entrar'):
-            if hmac.compare_digest(password,expected):st.session_state['manager_authenticated']=True;st.rerun()
-            else:st.error('Código de acesso incorreto.')
-    return False
-
 def manager_html(journals):
     html=(ROOT/'assets/index.html').read_text(encoding='utf-8')
     css=(ROOT/'assets/style.css').read_text(encoding='utf-8')
@@ -239,7 +226,6 @@ def manager_html(journals):
     return html
 
 def manager_page():
-    if not manager_access():return
     left,right=st.columns([4,1])
     left.caption('Formulário e painel compartilham os envios deste portal. Os cinco exemplos iniciais são um recorte sem contatos e sem anexos originais.')
     if right.button('Atualizar submissões'):st.rerun()

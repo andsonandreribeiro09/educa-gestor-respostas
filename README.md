@@ -8,7 +8,7 @@ Portal único para teste de preenchimento, recebimento de submissões e análise
 - A interface usa os HTML, CSS e JavaScript originais da aplicação local: cabeçalho institucional, etapas horizontais, campos em colunas e resumo lateral. Um componente bidirecional transporta as operações para o servidor Streamlit; os campos nativos da primeira versão foram substituídos.
 - Registro de novas submissões em uma base compartilhada pelas sessões do portal. Reenvios acidentais da mesma sessão usam o mesmo protocolo.
 - Comprovante PDF e cópia JSON; o teste não envia e-mails nem submete ao Google Forms ou ao Portal Educ@ institucional.
-- Área do gestor com código de acesso, os gráficos e dossiês do painel original, além de download dos anexos de novas submissões.
+- Área do gestor com acesso direto pelo link nesta fase de teste, os gráficos e dossiês do painel original, além de download dos anexos de novas submissões.
 - Cinco revistas de demonstração com contatos e notas internas removidos. Os anexos originais continuam no computador de origem; não estão neste repositório.
 - Exportação e restauração de backup dos novos envios com seus anexos.
 
@@ -16,15 +16,11 @@ Portal único para teste de preenchimento, recebimento de submissões e análise
 
 Python 3.12. Instale `pip install -r requirements.txt` e execute `streamlit run streamlit_app.py`.
 
-Configure o código de acesso em `.streamlit/secrets.toml`, que nunca deve ser versionado:
-
-```toml
-manager_password = "seu-codigo-de-acesso"
-```
+Não é necessário configurar senha ou Secrets para acessar o gestor neste piloto. Qualquer pessoa com o link pode consultar as respostas do teste.
 
 ## Deploy no Community Cloud
 
-Selecione o repositório `andsonandreribeiro09/educa-gestor-respostas`, branch `main` e arquivo `streamlit_app.py`. Nas configurações avançadas, use Python 3.12 e defina `manager_password` nos Secrets. O formulário fica acessível pelo link; a área do gestor exige esse código.
+Selecione o repositório `andsonandreribeiro09/educa-gestor-respostas`, branch `main` e arquivo `streamlit_app.py`. Nas configurações avançadas, use Python 3.12. O formulário e a área do gestor ficam acessíveis pelo link, sem senha nesta fase de teste.
 
 - Formulário: URL do app com `?area=formulario`.
 - Gestor: URL do app com `?area=gestor`.
@@ -33,7 +29,7 @@ Selecione o repositório `andsonandreribeiro09/educa-gestor-respostas`, branch `
 
 O SQLite e os anexos dos novos envios usam o disco temporário do Streamlit. **A plataforma pode apagar esses dados em reinícios, reimplantações ou realocação do app.** Exporte o backup após cada rodada e restaure-o se necessário. A base local das portas 8200/8201 não é sincronizada com este portal.
 
-Para coleta real e contínua, é necessário conectar armazenamento persistente e autenticação individual dos gestores. O código compartilhado de acesso é apenas uma proteção de teste; não substitui uma identidade institucional. O adaptador do formulário reutiliza os módulos de identificação e de derivação de indicadores do formulário local. Rascunhos e seus anexos são preservados durante a sessão, com as mesmas limitações de armazenamento temporário do piloto. Nenhum e-mail é enviado nesta versão.
+Para coleta real e contínua, é necessário conectar armazenamento persistente e autenticação individual dos gestores. O piloto atual permite acesso sem senha, conforme solicitado para os testes. O adaptador do formulário reutiliza os módulos de identificação e de derivação de indicadores do formulário local. Rascunhos e seus anexos são preservados durante a sessão, com as mesmas limitações de armazenamento temporário do piloto. Nenhum e-mail é enviado nesta versão.
 
 Todos os indicadores permanecem preliminares e não representam decisão de aprovação. O ano corrente é parcial; as instruções originais e os anexos ainda precisam de conciliação da janela anual antes de avaliação institucional.
 
