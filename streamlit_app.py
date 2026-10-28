@@ -229,7 +229,6 @@ def manager_page():
     left,right=st.columns([4,1])
     left.caption('Formulário e painel compartilham os envios deste portal. Os cinco exemplos iniciais são um recorte sem contatos e sem anexos originais.')
     if right.button('Atualizar submissões'):st.rerun()
-    st.warning('Armazenamento temporário de teste. Exporte o backup após as conferências; reinícios do Streamlit podem apagar novos envios. Para uso contínuo, conectar armazenamento persistente.')
     st.download_button('Exportar backup dos novos envios e anexos',storage.export_backup(),file_name='educa-backup-teste.json',mime='application/json')
     with st.expander('Restaurar backup de um teste anterior'):
         backup=st.file_uploader('Backup JSON exportado pelo portal',type=['json'],key='restore_backup')
