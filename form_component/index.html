@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Formulário de submissão de periódicos para avaliação no Educ@, da Fundação Carlos Chagas." />
+    <title>Educ@ · Submissão de periódicos</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="institution">FUNDAÇÃO CARLOS CHAGAS<span>Educação e pesquisa</span></div>
+      <div class="brand" aria-label="Educ@, submissão de periódicos">
+        <strong>Educ<span>@</span></strong><span>Submissão de periódicos</span>
+      </div>
+      <a class="portal-link" href="https://educa.fcc.org.br/" target="_blank" rel="noopener noreferrer">Portal Educ@ <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <section class="welcome-card" aria-labelledby="page-title">
+      <div class="welcome-inner">
+        <div class="welcome-copy">
+          <div class="breadcrumb">Educ@ <span aria-hidden="true">/</span> Submissão de periódicos</div>
+          <h1 id="page-title">Solicitação de avaliação</h1>
+          <p>Apresente seu periódico à coleção Educ@. Preencha por etapas, salve o rascunho e complete as pendências antes do envio.</p>
+        </div>
+        <div class="welcome-note"><span class="eyebrow">Antes de começar</span><strong>Tenha o ISSN em mãos</strong><p>Valide a identificação da revista. Depois, você pode continuar o rascunho e completar as pendências antes de enviar.</p></div>
+      </div>
+    </section>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <nav id="section-nav" aria-label="Etapas do formulário"></nav>
+      </aside>
+
+      <main class="content">
+        <div class="mobile-progress"><span id="mobile-section">Carregando…</span><strong id="mobile-percent">0%</strong></div>
+        <section id="form-card" class="form-card" aria-live="polite">
+          <div class="loading">Preparando o formulário…</div>
+        </section>
+
+        <div class="form-actions">
+          <button id="previous-button" class="button button--ghost" type="button">Voltar</button>
+          <div class="action-right">
+            <button id="validate-button" class="button button--secondary" type="button">Validar esta etapa</button>
+            <button id="next-button" class="button button--primary" type="button">Próxima etapa</button>
+            <button id="submit-button" class="button button--primary hidden" type="button">Enviar para a fila</button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="review-panel">
+        <div id="draft-status" class="draft-status saved" role="status">Nova resposta em branco</div>
+        <div class="review-heading"><span class="eyebrow">Resumo da resposta</span><h2 id="summary-title">Nova submissão</h2></div>
+        <div class="progress-ring" id="progress-ring"><strong id="progress-value">0%</strong></div>
+        <p id="progress-copy">0 de 0 campos visíveis preenchidos</p>
+        <div class="summary-metrics">
+          <div><span>Critérios</span><strong id="criteria-count">44</strong></div>
+          <div><span>Alertas</span><strong id="warning-count">—</strong></div>
+        </div>
+        <div id="validation-result" class="validation-result empty">Valide a etapa atual para conferir os campos e liberar a próxima.</div>
+      </aside>
+    </div>
+
+    <div class="portal-test-note">Ambiente de teste · Os envios aparecem na área do gestor deste portal. Use dados fictícios. O armazenamento é temporário; o gestor deve exportar o backup.</div><footer class="site-footer"><strong>Educ@</strong><span>Fundação Carlos Chagas</span><p>A submissão será analisada pela equipe responsável pela coleção.</p></footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="receipt-modal" class="receipt-modal hidden" role="dialog" aria-modal="true" aria-labelledby="receipt-title">
+      <div class="receipt-card">
+        <button id="receipt-close" class="receipt-close" type="button" aria-label="Fechar">×</button>
+        <div class="receipt-seal" aria-hidden="true">✓</div>
+        <span class="eyebrow">Envio concluído · 100%</span>
+        <h2 id="receipt-title">Recebida com sucesso</h2>
+        <p>Guarde o protocolo abaixo. Seus dados foram registrados e o formulário está pronto para uma nova revista.</p>
+        <strong id="receipt-protocol" class="receipt-protocol"></strong>
+        <p id="receipt-email-status" class="receipt-email-status"></p>
+        <div class="receipt-actions">
+          <a id="receipt-download" download="comprovante-teste.pdf" class="button button--primary" href="#" target="_blank" rel="noopener">Baixar comprovante PDF</a>
+          <a id="receipt-verify" download="respostas-teste.json" class="button button--ghost" href="#" target="_blank" rel="noopener">Baixar respostas JSON</a>
+        </div>
+        <button id="receipt-new" class="button button--secondary" type="button">Preencher outra revista</button>
+        <small>O comprovante confirma o recebimento. A avaliação e a aprovação ocorrem posteriormente.</small>
+      </div>
+    </div>
+    <script src="./bridge.js"></script><script src="./app.js" defer></script>
+  </body>
+</html>

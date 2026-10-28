@@ -274,4 +274,7 @@ mode=st.query_params.get('area','formulario')
 area=st.radio('Área do portal',['Formulário de teste','Área do gestor'],index=1 if mode=='gestor' else 0,horizontal=True)
 st.query_params['area']='gestor' if area=='Área do gestor' else 'formulario'
 if area=='Área do gestor':manager_page()
-else:form_page()
+else:
+    from form_portal import render_form
+    st.markdown('<style>.block-container{max-width:none;padding:0!important}section[data-testid="stMain"]{padding:0}header[data-testid="stHeader"]{display:none}div[data-testid="stRadio"]{padding:8px 4vw;background:white;margin:0}div[data-testid="stCustomComponentV1"]{width:100%}</style>',unsafe_allow_html=True)
+    render_form(pdf_receipt)

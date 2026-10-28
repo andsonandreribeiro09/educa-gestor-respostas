@@ -5,6 +5,7 @@ Portal único para teste de preenchimento, recebimento de submissões e análise
 ## O que está incluído
 
 - Formulário com os 98 campos do esquema original, organizado em 12 etapas, com condições, anexos, validação de pendências e consulta do ISSN na Crossref.
+- A interface usa os HTML, CSS e JavaScript originais da aplicação local: cabeçalho institucional, etapas horizontais, campos em colunas e resumo lateral. Um componente bidirecional transporta as operações para o servidor Streamlit; os campos nativos da primeira versão foram substituídos.
 - Registro de novas submissões em uma base compartilhada pelas sessões do portal. Reenvios acidentais da mesma sessão usam o mesmo protocolo.
 - Comprovante PDF e cópia JSON; o teste não envia e-mails nem submete ao Google Forms ou ao Portal Educ@ institucional.
 - Área do gestor com código de acesso, os gráficos e dossiês do painel original, além de download dos anexos de novas submissões.
@@ -32,7 +33,7 @@ Selecione o repositório `andsonandreribeiro09/educa-gestor-respostas`, branch `
 
 O SQLite e os anexos dos novos envios usam o disco temporário do Streamlit. **A plataforma pode apagar esses dados em reinícios, reimplantações ou realocação do app.** Exporte o backup após cada rodada e restaure-o se necessário. A base local das portas 8200/8201 não é sincronizada com este portal.
 
-Para coleta real e contínua, é necessário conectar armazenamento persistente e autenticação individual dos gestores. O código compartilhado de acesso é apenas uma proteção de teste; não substitui uma identidade institucional. A validação de ISSN desta versão consulta a Crossref; periódicos não registrados nessa fonte exigem outra verificação antes de habilitar o envio. As sugestões de preenchimento e a derivação assistida por fontes externas do formulário local não foram portadas para este piloto.
+Para coleta real e contínua, é necessário conectar armazenamento persistente e autenticação individual dos gestores. O código compartilhado de acesso é apenas uma proteção de teste; não substitui uma identidade institucional. O adaptador do formulário reutiliza os módulos de identificação e de derivação de indicadores do formulário local. Rascunhos e seus anexos são preservados durante a sessão, com as mesmas limitações de armazenamento temporário do piloto. Nenhum e-mail é enviado nesta versão.
 
 Todos os indicadores permanecem preliminares e não representam decisão de aprovação. O ano corrente é parcial; as instruções originais e os anexos ainda precisam de conciliação da janela anual antes de avaliação institucional.
 
