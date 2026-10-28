@@ -255,8 +255,15 @@ def manager_page():
     if st.checkbox('Incluir as cinco revistas de demonstração',value=True):journals+=json.loads((ROOT/'data/demo_journals.json').read_text(encoding='utf-8'))
     st.iframe(manager_html(journals),height=1050,alt='Painel Educ@ com respostas, métricas e gráficos')
 
+st.markdown('''<style>
+.st-key-portal_area{width:100%;text-align:center}
+.st-key-portal_area [data-testid="stWidgetLabel"]{justify-content:center}
+.st-key-portal_area [role="radiogroup"]{justify-content:center;gap:32px;flex-wrap:wrap}
+.st-key-portal_area [role="radiogroup"] label{margin:0}
+@media(max-width:600px){.st-key-portal_area [role="radiogroup"]{gap:16px}}
+</style>''',unsafe_allow_html=True)
 mode=st.query_params.get('area','formulario')
-area=st.radio('Área do portal',['Formulário de teste','Área do gestor'],index=1 if mode=='gestor' else 0,horizontal=True)
+area=st.radio('Área do portal',['Formulário de teste','Área do gestor'],index=1 if mode=='gestor' else 0,horizontal=True,key='portal_area')
 st.query_params['area']='gestor' if area=='Área do gestor' else 'formulario'
 if area=='Área do gestor':manager_page()
 else:
