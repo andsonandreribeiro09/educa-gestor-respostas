@@ -253,7 +253,7 @@ def manager_page():
             if file:annex['name']=file['name']
         journals.append(journal)
     if st.checkbox('Incluir as cinco revistas de demonstração',value=True):journals+=json.loads((ROOT/'data/demo_journals.json').read_text(encoding='utf-8'))
-    st.iframe(manager_html(journals),height=1050,alt='Painel Educ@ com respostas, métricas e gráficos')
+    st.iframe(manager_html(journals),height='content',alt='Painel Educ@ com respostas, métricas e gráficos')
 
 st.markdown('''<style>
 .st-key-portal_area{width:100%;text-align:center}

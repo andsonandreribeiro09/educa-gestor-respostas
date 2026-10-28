@@ -206,3 +206,6 @@ button:focus-visible, a:focus-visible { outline: 3px solid #a3133f70; outline-of
 .portal-test-note{padding:12px 4vw;font-size: 14px;color:#687585;background:#f2f4f8;border-top:1px solid #d9dfe8}
 
 body{font-size:18px}.site-footer .copyright{font-size:14px;margin-top:12px}
+
+/* A altura do conteúdo é medida pelo Streamlit; só a página externa rola. */
+html{height:auto;min-height:0;overflow-y:hidden}body{display:flow-root;height:auto;min-height:0;overflow-y:hidden}
